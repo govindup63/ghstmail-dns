@@ -27,7 +27,7 @@ jobs:
         - name : export cloudflare token
           run: |
             export CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}
-            echo "cloud flare api token starts with ${CLOUDFLARE_API_TOKEN:0:4}..." >> $GITHUB_ENV
+            echo "cloud flare api token starts with ${CLOUDFLARE_API_TOKEN:0:4}..."
 
         - name: Terraform Init
           run: terraform init
