@@ -24,13 +24,16 @@ jobs:
 
         - name: Setup Terraform
           uses: hashicorp/setup-terraform@v2
-        - name : export cloudflare token
-          run: |
-            export CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}
-            echo "cloud flare api token starts with ${CLOUDFLARE_API_TOKEN:0:4}..."
 
         - name: Terraform Init
           run: terraform init
+
+        - name: Terraform Plan
+          run: terraform plan -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}"
+
         - name: Terraform Apply
           run: terraform apply -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" --auto-approve --input=false
+
+        - name: Terraform Output
+          run: terraform output
         
