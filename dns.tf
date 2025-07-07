@@ -76,11 +76,11 @@ resource "cloudflare_dns_record" "hustle_cname" {
   proxied = false
 }
 
-resource "cloudflare_dns_record" "hustle_cname" {
+resource "cloudflare_dns_record" "pb_server" {
   zone_id = var.zone_id
-  name    = "hustle"
-  type    = "CNAME"
-  content = "cname.vercel-dns.com."
+  name    = "pb"
+  type    = "A"
+  content = "69.62.77.147"
   ttl     = 1
   proxied = false
 }
